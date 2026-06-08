@@ -70,6 +70,17 @@ jobs:
           echo "=== Full android/build.gradle ==="
           cat android/build.gradle 2>/dev/null | head -30
 
+      - name: Patch expo-av CMakeLists.txt (ReactAndroid::reactnativejni → reactnative for RN 0.76)
+        run: |
+          TARGET="node_modules/expo-av/android/CMakeLists.txt"
+          if [ -f "$TARGET" ]; then
+            sed -i 's/ReactAndroid::reactnativejni/ReactAndroid::reactnative/' "$TARGET"
+            echo "=== Patched $TARGET ==="
+            grep "ReactAndroid" "$TARGET"
+          else
+            echo "⚠ $TARGET not found, skipping"
+          fi
+
       - name: Build APK debug
         run: cd android && ./gradlew assembleDebug
 
