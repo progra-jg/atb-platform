@@ -34,11 +34,22 @@ jobs:
       - name: Expo prebuild (génère android/)
         run: npx expo prebuild --no-install
 
+      - name: Debug - check android/ structure
+        run: |
+          echo "=== android/ contents ==="
+          ls -la android/ 2>/dev/null || echo "android/ NOT FOUND"
+          echo "=== build.gradle ==="
+          cat android/build.gradle 2>/dev/null || echo "build.gradle NOT FOUND"
+          echo "=== app/build.gradle ==="
+          cat android/app/build.gradle 2>/dev/null | head -30 || echo "app/build.gradle NOT FOUND"
+
       - name: Patch Kotlin version
         run: |
-          sed -i 's/ext.kotlinVersion = "1.9.24"/ext.kotlinVersion = "1.9.25"/' android/build.gradle
-          echo "Kotlin version after patch:"
-          grep "ext.kotlinVersion" android/build.gradle
+          sed -i "s/ext.kotlinVersion = .*/ext.kotlinVersion = '1.9.25'/" android/build.gradle
+          echo "=== Kotlin version after patch ==="
+          grep "ext.kotlinVersion" android/build.gradle || echo "ext.kotlinVersion NOT FOUND in android/build.gradle"
+          echo "=== Trying android/build.gradle (project-level) ==="
+          cat android/build.gradle | head -20
 
       - name: Build APK debug
         run: cd android && ./gradlew assembleDebug

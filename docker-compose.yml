@@ -1,54 +1,77 @@
-version: "3.9"
 services:
   postgres:
     image: postgres:15-alpine
     container_name: atb-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: atb
-      POSTGRES_PASSWORD: atb_dev_2024
-      POSTGRES_DB: atb_agritrace
+      POSTGRES_USER: ${DB_USER:-atb}
+      POSTGRES_PASSWORD: ${DB_PASS:-atb_dev_2024}
+      POSTGRES_DB: ${DB_NAME:-atb_agritrace}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./packages/backend/init-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
       - ./packages/backend/seed-data.sql:/docker-entrypoint-initdb.d/02-seed.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U atb -d atb_agritrace"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-atb} -d ${DB_NAME:-atb_agritrace}"]
       interval: 5s
       retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
 
   api:
     build: ./packages/backend/services/api
     container_name: atb-api
     restart: unless-stopped
     ports:
-      - "4000:4000"
+      - "127.0.0.1:4000:4000"
     environment:
-      NODE_ENV: production
+      NODE_ENV: ${NODE_ENV:-production}
       API_PORT: "4000"
+      API_PUBLIC_URL: ${API_PUBLIC_URL:-https://api.agritrace.bj}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://api.agritrace.bj}
+      WEBAPP_URL: ${WEBAPP_URL:-https://buyer.agritrace.bj}
       DB_HOST: postgres
       DB_PORT: "5432"
-      DB_USER: atb
-      DB_PASS: atb_dev_2024
-      DB_NAME: atb_agritrace
-      JWT_SECRET: atb_jwt_secret_dev_2024
-      SENTINEL_MODE: mock
-      FEDAPAY_WEBHOOK_SECRET: ${FEDAPAY_WEBHOOK_SECRET:-fedapay_webhook_secret_dev}
+      DB_USER: ${DB_USER:-atb}
+      DB_PASS: ${DB_PASS:-atb_dev_2024}
+      DB_NAME: ${DB_NAME:-atb_agritrace}
+      JWT_SECRET: ${JWT_SECRET:-atb_jwt_secret_dev_2024}
+      SENTINEL_CLIENT_ID: ${SENTINEL_CLIENT_ID:-}
+      SENTINEL_CLIENT_SECRET: ${SENTINEL_CLIENT_SECRET:-}
+      SENTINEL_MODE: ${SENTINEL_MODE:-mock}
       FEDAPAY_API_KEY: ${FEDAPAY_API_KEY:-}
-      CINETPAY_API_KEY: ${CINETPAY_API_KEY:-}
-      CINETPAY_SITE_ID: ${CINETPAY_SITE_ID:-}
+      FEDAPAY_WEBHOOK_SECRET: ${FEDAPAY_WEBHOOK_SECRET:-}
+      FEDAPAY_SANDBOX: ${FEDAPAY_SANDBOX:-true}
       MTN_MOMO_API_USER: ${MTN_MOMO_API_USER:-}
       MTN_MOMO_API_KEY: ${MTN_MOMO_API_KEY:-}
       MTN_MOMO_SUBSCRIPTION_KEY: ${MTN_MOMO_SUBSCRIPTION_KEY:-}
+      MTN_MOMO_SANDBOX: ${MTN_MOMO_SANDBOX:-true}
+      CINETPAY_API_KEY: ${CINETPAY_API_KEY:-}
+      CINETPAY_SITE_ID: ${CINETPAY_SITE_ID:-}
+      CINETPAY_SANDBOX: ${CINETPAY_SANDBOX:-true}
       MANSA_API_KEY: ${MANSA_API_KEY:-}
       MANSA_EMAIL: ${MANSA_EMAIL:-api@atb.bj}
-      API_PUBLIC_URL: ${API_PUBLIC_URL:-http://localhost:4000}
-      WEBAPP_URL: ${WEBAPP_URL:-http://localhost:5174}
     depends_on:
       postgres:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
 
   web-buyer:
     build:
@@ -58,9 +81,16 @@ services:
     container_name: atb-web-buyer
     restart: unless-stopped
     ports:
-      - "5174:80"
+      - "127.0.0.1:5174:80"
     depends_on:
-      - api
+      api:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
 volumes:
   pgdata:
