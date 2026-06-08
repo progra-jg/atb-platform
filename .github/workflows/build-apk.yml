@@ -44,13 +44,31 @@ jobs:
           echo "=== app/build.gradle ==="
           cat android/app/build.gradle 2>/dev/null | head -30 || echo "app/build.gradle NOT FOUND"
 
-      - name: Patch Kotlin version
+      - name: Patch Kotlin version (ext + version catalog)
         run: |
-          sed -i "s/ext.kotlinVersion = .*/ext.kotlinVersion = '1.9.25'/" android/build.gradle
-          echo "=== Kotlin version after patch ==="
-          grep "ext.kotlinVersion" android/build.gradle || echo "ext.kotlinVersion NOT FOUND in android/build.gradle"
-          echo "=== Trying android/build.gradle (project-level) ==="
-          cat android/build.gradle | head -20
+          # Patch project-level build.gradle
+          sed -i "s/ext.kotlinVersion = .*/ext.kotlinVersion = '1.9.25'/" android/build.gradle 2>/dev/null || true
+          echo "=== ext.kotlinVersion after patch ==="
+          grep "ext.kotlinVersion" android/build.gradle || echo "NOT FOUND in build.gradle"
+
+          # Patch version catalog (libs.versions.toml) if exists
+          if [ -f android/gradle/libs.versions.toml ]; then
+            sed -i 's/kotlin = "1.9.24"/kotlin = "1.9.25"/' android/gradle/libs.versions.toml
+            echo "=== libs.versions.toml kotlin after patch ==="
+            grep "kotlin" android/gradle/libs.versions.toml
+          fi
+
+          # Also patch the react-native bundled catalog (used by version catalog)
+          for f in node_modules/react-native/gradle/libs.versions.toml node_modules/@react-native/gradle-plugin/gradle/libs.versions.toml; do
+            if [ -f "$f" ]; then
+              sed -i 's/kotlin = "1.9.24"/kotlin = "1.9.25"/' "$f"
+              echo "=== Patched $f ==="
+              grep "kotlin" "$f"
+            fi
+          done
+
+          echo "=== Full android/build.gradle ==="
+          cat android/build.gradle 2>/dev/null | head -30
 
       - name: Build APK debug
         run: cd android && ./gradlew assembleDebug
