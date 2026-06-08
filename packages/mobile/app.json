@@ -51,14 +51,7 @@
       "expo-secure-store",
       "expo-sqlite",
       "expo-notifications",
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "kotlinVersion": "1.9.25"
-          }
-        }
-      ]
+      "./plugins/withKotlinFix.js"
     ],
     "extra": {
       "apiUrl": "https://api.agritrace.bj/api"
