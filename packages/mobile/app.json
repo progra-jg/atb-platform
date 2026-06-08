@@ -50,7 +50,21 @@
       "expo-camera",
       "expo-secure-store",
       "expo-sqlite",
-      "expo-notifications"
+      "expo-notifications",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "packagingOptions": {
+              "pickFirst": [
+                "**/libreactnative.so",
+                "**/libc++_shared.so",
+                "**/libfbjni.so"
+              ]
+            }
+          }
+        }
+      ]
     ],
     "extra": {
       "apiUrl": "https://api.agritrace.bj/api"
