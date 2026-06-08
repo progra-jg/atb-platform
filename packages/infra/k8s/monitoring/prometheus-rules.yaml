@@ -1,0 +1,62 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: atb-alert-rules
+  namespace: atb-monitoring
+spec:
+  groups:
+    - name: atb-api
+      rules:
+        - alert: HighAPILatency
+          expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) > 2
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "API latency > 2s for 5 minutes"
+
+        - alert: HighErrorRate
+          expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) > 0.05
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Error rate > 5%"
+
+    - name: atb-blockchain
+      rules:
+        - alert: BlockchainNodeDown
+          expr: up{job="besu-node"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Blockchain node is down"
+
+    - name: atb-iot
+      rules:
+        - alert: SyncQueueBacklog
+          expr: sync_queue_size > 10000
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Sync queue backlog > 10K messages"
+
+        - alert: IoTDeviceOffline
+          expr: iot_device_heartbeat{status="offline"} > 10
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "More than 10 IoT devices offline"
+
+    - name: atb-deforestation
+      rules:
+        - alert: DeforestationAlert
+          expr: deforestation_alerts_total > 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "New deforestation alert detected"

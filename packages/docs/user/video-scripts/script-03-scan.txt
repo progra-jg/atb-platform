@@ -1,0 +1,18 @@
+VIDÉO 3 — Scanner un QR code (2 min)
+
+[00:00-00:15] Introduction
+"Le QR code est la clé de la traçabilité. Chaque lot a son propre QR code unique."
+
+[00:15-00:45] Scanner
+"1. Ouvrez l'application ATB AgriTrace
+ 2. Cliquez sur 'Scanner un QR Code'
+ 3. Pointez l'appareil vers le QR code imprimé sur le sac"
+
+[00:45-01:15] Résultat
+"Vous voyez maintenant: le type de culture, la quantité, le producteur, et tout l'historique du transfert."
+
+[01:15-01:40] Vérification
+"Le badge vert indique que les informations sont vérifiées sur la blockchain."
+
+[01:40-02:00] Conclusion
+"Le QR code garantit la transparence de la filière."

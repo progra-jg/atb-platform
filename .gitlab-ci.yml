@@ -1,0 +1,177 @@
+image: docker:latest
+
+stages:
+  - lint
+  - test
+  - build
+  - dockerize
+  - security
+  - deploy-staging
+  - deploy-prod
+
+variables:
+  DOCKER_REGISTRY: registry.gitlab.com/atb/agri-trace
+
+cache:
+  paths:
+    - node_modules/
+    - .venv/
+
+# ── Lint ────────────────────────────────────────
+lint:js:
+  stage: lint
+  image: node:18
+  script:
+    - cd packages/backend && npm ci && npm run lint
+  except: [main]
+
+lint:python:
+  stage: lint
+  image: python:3.11
+  script:
+    - pip install ruff
+    - ruff check packages/satellite-ai/ packages/iot-bridge/
+  except: [main]
+
+lint:solidity:
+  stage: lint
+  image: node:18
+  script:
+    - npm install -g solhint
+    - solhint packages/blockchain/contracts/**/*.sol
+  except: [main]
+
+lint:go:
+  stage: lint
+  image: golang:1.21
+  script:
+    - cd packages/backend/services/traceability && go vet ./...
+    - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.55.0
+    - golangci-lint run ./...
+  except: [main]
+
+# ── Test ────────────────────────────────────────
+test:blockchain:
+  stage: test
+  image: node:18
+  before_script:
+    - npm install -g hardhat
+  script:
+    - cd packages/blockchain && npm ci && npx hardhat test
+  artifacts:
+    reports:
+      junit: packages/blockchain/test-reports.xml
+
+test:backend:
+  stage: test
+  image: node:18
+  services:
+    - postgis/postgis:15-3.3
+    - redis:7
+  script:
+    - cd packages/backend && npm ci && npm test
+  artifacts:
+    reports:
+      junit: packages/backend/test-reports.xml
+
+test:satellite:
+  stage: test
+  image: python:3.11
+  script:
+    - cd packages/satellite-ai && pip install -r requirements.txt && pytest
+  artifacts:
+    reports:
+      junit: packages/satellite-ai/test-reports.xml
+
+# ── Build ───────────────────────────────────────
+build:backend-api:
+  stage: build
+  script:
+    - cd packages/backend/services/api && docker build -t $DOCKER_REGISTRY/api:latest .
+
+build:backend-auth:
+  stage: build
+  script:
+    - cd packages/backend/services/auth && docker build -t $DOCKER_REGISTRY/auth:latest .
+
+build:backend-traceability:
+  stage: build
+  script:
+    - cd packages/backend/services/traceability && docker build -t $DOCKER_REGISTRY/traceability:latest .
+
+build:satellite-ai:
+  stage: build
+  script:
+    - cd packages/satellite-ai && docker build -t $DOCKER_REGISTRY/satellite-ai:latest .
+
+build:iot-bridge:
+  stage: build
+  script:
+    - cd packages/iot-bridge && docker build -t $DOCKER_REGISTRY/iot-bridge:latest .
+
+build:web-buyer:
+  stage: build
+  script:
+    - cd packages/web-buyer && docker build --build-arg VITE_API_URL=/api -t $DOCKER_REGISTRY/web-buyer:latest .
+
+build:web-admin:
+  stage: build
+  script:
+    - cd packages/web-admin && docker build -t $DOCKER_REGISTRY/web-admin:latest .
+
+# ── Dockerize ───────────────────────────────────
+dockerize:api:
+  stage: dockerize
+  script:
+    - docker push $DOCKER_REGISTRY/api:latest
+
+dockerize:auth:
+  stage: dockerize
+  script:
+    - docker push $DOCKER_REGISTRY/auth:latest
+
+dockerize:traceability:
+  stage: dockerize
+  script:
+    - docker push $DOCKER_REGISTRY/traceability:latest
+
+dockerize:satellite:
+  stage: dockerize
+  script:
+    - docker push $DOCKER_REGISTRY/satellite-ai:latest
+
+# ── Security ────────────────────────────────────
+security:trivy:
+  stage: security
+  image: aquasec/trivy:latest
+  script:
+    - trivy image --severity HIGH,CRITICAL $DOCKER_REGISTRY/api:latest
+    - trivy image --severity HIGH,CRITICAL $DOCKER_REGISTRY/auth:latest
+    - trivy image --severity HIGH,CRITICAL $DOCKER_REGISTRY/traceability:latest
+    - trivy image --severity HIGH,CRITICAL $DOCKER_REGISTRY/satellite-ai:latest
+
+security:sonarqube:
+  stage: security
+  script:
+    - sonar-scanner -Dsonar.projectKey=atb-agri-trace -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN
+  only: [main]
+
+# ── Deploy ──────────────────────────────────────
+deploy:staging:
+  stage: deploy-staging
+  image: hashicorp/terraform:1.5
+  script:
+    - cd packages/infra && terraform init && terraform apply -var-file=staging.tfvars -auto-approve
+  environment:
+    name: staging
+  only: [develop]
+
+deploy:prod:
+  stage: deploy-prod
+  image: hashicorp/terraform:1.5
+  script:
+    - cd packages/infra && terraform init && terraform apply -var-file=prod.tfvars -auto-approve
+  environment:
+    name: production
+  only: [main]
+  when: manual

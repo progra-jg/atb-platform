@@ -1,0 +1,9 @@
+{
+  "title": "Blockchain",
+  "panels": [
+    {"title": "Blocs par minute", "type": "graph", "targets": [{"expr": "rate(ethereum_block_number[1m])"}]},
+    {"title": "Transactions en attente", "type": "graph", "targets": [{"expr": "ethereum_pending_transactions"}]},
+    {"title": "Gas price (Gwei)", "type": "gauge", "targets": [{"expr": "ethereum_gas_price / 1e9"}]},
+    {"title": "Nœuds connectés", "type": "stat", "targets": [{"expr": "count(up{job='besu-node'})"}]}
+  ]
+}

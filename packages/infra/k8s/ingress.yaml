@@ -1,0 +1,93 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: atb-ingress
+  namespace: atb-prod
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: ${AWS_CERT_ARN}
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+spec:
+  rules:
+    - host: api.agritrace.bj
+      http:
+        paths:
+          - path: /health
+            pathType: Exact
+            backend:
+              service:
+                name: api-service
+                port:
+                  number: 4000
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: api-service
+                port:
+                  number: 4000
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-service
+                port:
+                  number: 3000
+          - path: /parcelles
+            pathType: Prefix
+            backend:
+              service:
+                name: parcelle-service
+                port:
+                  number: 3001
+          - path: /lots
+            pathType: Prefix
+            backend:
+              service:
+                name: traceability-service
+                port:
+                  number: 8080
+          - path: /certificates
+            pathType: Prefix
+            backend:
+              service:
+                name: certification-service
+                port:
+                  number: 3002
+          - path: /marketplace
+            pathType: Prefix
+            backend:
+              service:
+                name: marketplace-service
+                port:
+                  number: 3003
+          - path: /ai
+            pathType: Prefix
+            backend:
+              service:
+                name: satellite-ai-service
+                port:
+                  number: 8000
+    - host: admin.agritrace.bj
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-admin-service
+                port:
+                  number: 80
+    - host: buyer.agritrace.bj
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-buyer-service
+                port:
+                  number: 80

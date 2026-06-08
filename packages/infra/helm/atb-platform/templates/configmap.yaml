@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: atb-config
+  labels: {{ include "atb.labels" . | nindent 4 }}
+data:
+  NODE_ENV: {{ .Values.global.environment }}
+  API_URL: https://api.{{ .Values.ingress.host }}
+  API_PORT: "4000"
+  CORS_ORIGINS: "https://buyer.{{ .Values.ingress.host }},https://admin.{{ .Values.ingress.host }}"
+  API_PUBLIC_URL: "https://api.{{ .Values.ingress.host }}"
+  WEBAPP_URL: "https://buyer.{{ .Values.ingress.host }}"
+  SENTINEL_MODE: "mock"

@@ -1,0 +1,9 @@
+github.com/bytedance/sonic v1.9.1/go.mod h1:i736MUS0RQBmI9HZdCx9mh1FISiW3cP0JNQwW2MnKSM=
+github.com/gin-gonic/gin v1.9.1 h1:4iR72i8ZR6fRwGYyM2CIhBZqRQYJdVJlFgP1G2Y6Qv4=
+github.com/gin-gonic/gin v1.9.1/go.mod h1:hPrL7YrpRg0NtBWUyC8H+0yORVD4KV4cFJtzH5y3H/o=
+github.com/golang-jwt/jwt/v5 v5.2.0 h1:JHf+gKp0Q0PQHsFVh5sJ8A0HFE3F4GYSKVYDHwGgRMw=
+github.com/golang-jwt/jwt/v5 v5.2.0/go.mod h1:pqrtFR0X4osieyHYxtmOUWsAWrfe1Q5UVIyoH402zdk=
+github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQwpS4JEWq7dtCCRUEw=
+github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4T544tWzH6hKFbGRn7nbIqu9HhEDnDfBSJg=
+github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e h1:MRM5ITcdelDZPgo8n/BSQfC2c3RaM2p1iGxi0/KXbOg=
+github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e/go.mod h1:XV66xRDqSt+GTGFMVlhk3ULuV0y9ZmQDmH2G7ZJgW4o=

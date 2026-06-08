@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pagerduty-config
+  namespace: atb-monitoring
+type: Opaque
+stringData:
+  PAGERDUTY_ROUTING_KEY: "your-pagerduty-routing-key"
+---
+apiVersion: monitoring.coreos.com/v1
+kind: AlertmanagerConfig
+metadata:
+  name: pagerduty-config
+  namespace: atb-monitoring
+spec:
+  route:
+    groupBy: ["severity"]
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 4h
+    receiver: "pagerduty-critical"
+    routes:
+      - match:
+          severity: critical
+        receiver: pagerduty-critical
+  receivers:
+    - name: pagerduty-critical
+      pagerdutyConfigs:
+        - routingKey:
+            name: PAGERDUTY_ROUTING_KEY
+          severity: critical

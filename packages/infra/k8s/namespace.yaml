@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: atb-prod
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: atb-staging
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: atb-dev
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: atb-monitoring

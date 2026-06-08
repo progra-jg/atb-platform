@@ -1,0 +1,9 @@
+{
+  "title": "IoT Devices",
+  "panels": [
+    {"title": "Poids balance (dernière 24h)", "type": "graph", "targets": [{"expr": "iot_scale_weight"}]},
+    {"title": "Appareils en ligne/offline", "type": "stat", "targets": [{"expr": "sum(iot_device_status{status='online'})"}]},
+    {"title": "Batterie moyenne", "type": "gauge", "targets": [{"expr": "avg(iot_device_battery)"}]},
+    {"title": "Messages MQTT/s", "type": "graph", "targets": [{"expr": "rate(mqtt_messages_total[5m])"}]}
+  ]
+}

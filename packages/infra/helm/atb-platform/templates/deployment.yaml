@@ -1,0 +1,68 @@
+{{- range $service, $config := .Values }}
+{{- if kindIs "map" $config }}
+{{- if hasKey $config "image" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $service }}-deployment
+  labels: {{ include "atb.labels" $ | nindent 4 }}
+spec:
+  replicas: {{ $config.replicaCount | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ $service }}
+  template:
+    metadata:
+      labels:
+        app: {{ $service }}
+    spec:
+      {{- if and (hasKey $config "gpu") $config.gpu.enabled }}
+      nodeSelector:
+        accelerator: nvidia-tesla-t4
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+      {{- end }}
+      containers:
+        - name: {{ $service }}
+          image: "{{ $.Values.global.imageRegistry }}/{{ $config.image }}"
+          ports:
+            - containerPort: {{ $config.port }}
+          envFrom:
+            - configMapRef:
+                name: atb-config
+            - secretRef:
+                name: atb-secrets
+          resources:
+            requests: {{ $config.resources.requests | toYaml | nindent 14 }}
+            limits: {{ $config.resources.limits | toYaml | nindent 14 }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ $config.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ $config.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $service }}-service
+spec:
+  selector:
+    app: {{ $service }}
+  ports:
+    - port: {{ $config.port }}
+      targetPort: {{ $config.port }}
+---
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,16 @@
+VIDÉO 5 — Acheter des lots tracés (2 min)
+
+[00:00-00:15] Introduction
+"Acheteurs, découvrez comment trouver et acheter des lots certifiés sur ATB AgriTrace."
+
+[00:15-00:45] Recherche
+"Connectez-vous sur buyer.agritrace.bj. Utilisez les filtres: culture, certification, statut."
+
+[00:45-01:15] Détails
+"Cliquez sur un lot pour voir la timeline complète: du producteur à l'export. Téléchargez les certificats EUDR."
+
+[01:15-01:40] Achat
+"Cliquez sur 'Acheter ce lot'. Négociez le prix. Le contrat est généré automatiquement."
+
+[01:40-02:00] Conclusion
+"Garantie de conformité EUDR, vérification blockchain, livraison tracée."

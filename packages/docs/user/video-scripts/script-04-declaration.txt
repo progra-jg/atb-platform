@@ -1,0 +1,18 @@
+VIDÉO 4 — Déclarer une récolte par USSD (2 min)
+
+[00:00-00:15] Introduction
+"Pas de smartphone? Pas de problème! Utilisez le code USSD *123#."
+
+[00:15-00:45] Menu USSD
+"Composez *123# sur votre téléphone. Vous voyez le menu principal."
+
+[00:45-01:15] Déclaration
+"1. Appuyez sur 2 pour 'Déclarer récolte'
+ 2. Entrez le nombre de sacs
+ 3. Entrez le poids estimé par sac"
+
+[01:15-01:40] Confirmation
+"Vous recevez un récapitulatif par SMS. Un agent viendra vérifier sous 48h."
+
+[01:40-02:00] Conclusion
+"Simple, rapide, accessible à tous."

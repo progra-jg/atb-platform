@@ -1,0 +1,34 @@
+<mxfile>
+<diagram name="C4 Context" id="context">
+    <mxGraphModel dx="1422" dy="808" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+        <root>
+            <mxCell id="0" />
+            <mxCell id="1" parent="0" />
+            <mxCell id="2" value="Producteur" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#60a917;fontColor=#ffffff;strokeColor=#2d7600;" vertex="1" parent="1">
+                <mxGeometry x="40" y="300" width="120" height="60" as="geometry" />
+            </mxCell>
+            <mxCell id="3" value="Acheteur" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#0050ef;fontColor=#ffffff;strokeColor=#001cbc;" vertex="1" parent="1">
+                <mxGeometry x="40" y="420" width="120" height="60" as="geometry" />
+            </mxCell>
+            <mxCell id="4" value="ATB AgriTrace Platform" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#1b5e20;fontColor=#ffffff;strokeColor=#0d3b11;fontSize=14;" vertex="1" parent="1">
+                <mxGeometry x="340" y="340" width="180" height="100" as="geometry" />
+            </mxCell>
+            <mxCell id="5" value="App Mobile Producteur" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#60a917;fontColor=#ffffff;strokeColor=#2d7600;" vertex="1" parent="1">
+                <mxGeometry x="640" y="260" width="140" height="50" as="geometry" />
+            </mxCell>
+            <mxCell id="6" value="Portail Web Acheteur" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#0050ef;fontColor=#ffffff;strokeColor=#001cbc;" vertex="1" parent="1">
+                <mxGeometry x="640" y="340" width="140" height="50" as="geometry" />
+            </mxCell>
+            <mxCell id="7" value="Dashboard Admin" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#797979;fontColor=#ffffff;strokeColor=#4d4d4d;" vertex="1" parent="1">
+                <mxGeometry x="640" y="420" width="140" height="50" as="geometry" />
+            </mxCell>
+            <mxCell id="8" value="Blockchain Hyperledger Besu" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#f0a30a;fontColor=#ffffff;strokeColor=#b48100;" vertex="1" parent="1">
+                <mxGeometry x="640" y="500" width="140" height="50" as="geometry" />
+            </mxCell>
+            <mxCell id="9" value="API Gateway Kong" style="whiteSpace=wrap;html=1;rounded=1;filledColor=#1b5e20;fontColor=#ffffff;strokeColor=#0d3b11;" vertex="1" parent="1">
+                <mxGeometry x="340" y="500" width="180" height="50" as="geometry" />
+            </mxCell>
+        </root>
+    </mxGraphModel>
+</diagram>
+</mxfile>

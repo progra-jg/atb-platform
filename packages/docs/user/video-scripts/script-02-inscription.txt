@@ -1,0 +1,18 @@
+VIDÉO 2 — Créer son compte producteur (2 min)
+
+[00:00-00:20] Ouverture
+"Dans cette vidéo, apprenez à créer votre compte producteur ATB AgriTrace."
+
+[00:20-00:50] Étapes
+"1. Téléchargez l'application depuis le Play Store
+ 2. Ouvrez l'application et cliquez sur 'Créer un compte'
+ 3. Entrez votre nom, numéro de téléphone et village"
+
+[00:50-01:20] Code PIN
+"Créez un code PIN à 4 chiffres. Il vous servira à vous connecter même sans internet."
+
+[01:20-01:40] Confirmation
+"Vous recevrez un SMS de confirmation. Votre compte est maintenant actif!"
+
+[01:40-02:00] Conclusion
+"Prochaine étape: enregistrer vos parcelles. Rendez-vous dans la vidéo suivante."

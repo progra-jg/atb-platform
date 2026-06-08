@@ -1,0 +1,116 @@
+global:
+  environment: staging
+  imageRegistry: registry.gitlab.com/atb/agri-trace
+
+apiService:
+  replicaCount: 2
+  image: api:latest
+  port: 4000
+  resources:
+    requests: { cpu: "500m", memory: "512Mi" }
+    limits: { cpu: "1", memory: "1Gi" }
+
+# ─── Secrets (vider en staging, remplir dans values-prod.yaml) ───────
+secrets:
+  jwtSecret: ""
+  # FedaPay
+  fedapayApiKey: ""
+  fedapayWebhookSecret: ""
+  fedapaySandbox: "true"
+  # MTN MoMo
+  mtnMomoApiUser: ""
+  mtnMomoApiKey: ""
+  mtnMomoSubscriptionKey: ""
+  mtnMomoSandbox: "true"
+  # CinetPay
+  cinetpayApiKey: ""
+  cinetpaySiteId: ""
+  cinetpaySandbox: "true"
+  # Mansa API
+  mansaApiKey: ""
+  mansaEmail: "api@atb.bj"
+  # Satellite
+  sentinelClientId: ""
+  sentinelClientSecret: ""
+  planetApiKey: ""
+
+authService:
+  replicaCount: 2
+  image: auth:latest
+  port: 3000
+  resources:
+    requests: { cpu: "250m", memory: "256Mi" }
+    limits: { cpu: "500m", memory: "512Mi" }
+
+parcelleService:
+  replicaCount: 2
+  image: parcelle:latest
+  port: 3001
+  resources:
+    requests: { cpu: "250m", memory: "256Mi" }
+    limits: { cpu: "500m", memory: "512Mi" }
+
+marketplaceService:
+  replicaCount: 2
+  image: marketplace:latest
+  port: 3003
+  resources:
+    requests: { cpu: "250m", memory: "256Mi" }
+    limits: { cpu: "500m", memory: "512Mi" }
+
+certificationService:
+  replicaCount: 2
+  image: certification:latest
+  port: 3002
+  resources:
+    requests: { cpu: "250m", memory: "256Mi" }
+    limits: { cpu: "500m", memory: "512Mi" }
+
+traceabilityService:
+  replicaCount: 3
+  image: traceability:latest
+  port: 8080
+  resources:
+    requests: { cpu: "500m", memory: "512Mi" }
+    limits: { cpu: "1", memory: "1Gi" }
+
+webBuyer:
+  replicaCount: 2
+  image: web-buyer:latest
+  port: 80
+  resources:
+    requests: { cpu: "100m", memory: "128Mi" }
+    limits: { cpu: "250m", memory: "256Mi" }
+
+webAdmin:
+  replicaCount: 2
+  image: web-admin:latest
+  port: 80
+  resources:
+    requests: { cpu: "100m", memory: "128Mi" }
+    limits: { cpu: "250m", memory: "256Mi" }
+
+satelliteAI:
+  replicaCount: 1
+  image: satellite-ai:latest
+  port: 8000
+  resources:
+    requests: { cpu: "1", memory: "2Gi" }
+    limits: { cpu: "4", memory: "8Gi" }
+  gpu:
+    enabled: true
+
+postgresql:
+  enabled: true
+  postgresqlDatabase: atb_agritrace
+  postgresqlUsername: atb
+  postgresqlPassword: atb_prod_2024
+
+redis:
+  enabled: true
+
+ingress:
+  enabled: true
+  host: agritrace.bj
+  tls: true
+  certificateArn: ""

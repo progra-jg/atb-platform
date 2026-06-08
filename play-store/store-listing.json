@@ -1,0 +1,15 @@
+{
+  "package_name": "com.atb.agritrace",
+  "title": "ATB AgriTrace",
+  "category": "FINANCE",
+  "content_rating": {
+    "rating": "Everyone",
+    "notes": "Aucun contenu violent ou explicite. L'application est un outil de suivi agricole et de transactions sécurisées."
+  },
+  "pricing": "FREE",
+  "countries": ["BJ", "BF", "CI", "SN", "ML", "NE", "TG", "CM", "CD", "RW", "UG"],
+  "target_audience": {
+    "primary": "Agriculteurs, producteurs, acheteurs de matières premières agricoles en Afrique de l'Ouest",
+    "secondary": "Transporteurs, intermédiaires, agents de terrain, coopératives"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "common": {
+    "loading": "Chargement...", "error": "Une erreur est survenue", "retry": "Réessayer",
+    "cancel": "Annuler", "confirm": "Confirmer", "send": "Envoyer", "sending": "Envoi...",
+    "success": "Succès", "yes": "Oui", "no": "Non", "search": "Rechercher", "save": "Enregistrer",
+    "phone": "Téléphone", "gps": "GPS", "date": "Date", "amount": "Montant", "status": "Statut",
+    "close": "Fermer", "delete": "Supprimer", "edit": "Modifier", "share": "Partager"
+  },
+  "nav": {
+    "lots": "Lots", "payout": "Paiements", "financing": "Financement",
+    "scan": "Scanner", "settings": "Paramètres",
+    "dashboard": "Tableau de bord", "orders": "Commandes", "negotiations": "Négociations", "payments": "Paiements",
+    "market": "Marché", "offers": "Appels d'offre", "transport": "Transport",
+    "talkie": "Talkie", "commerce": "Commerce Act", "kyc": "KYC",
+    "groupage": "Groupage", "previsions": "Prévisions",
+    "trust": "Confiance",
+    "bulletins": "Marché du Soir",
+    "meteo": "Météo", "annuaire": "Producteurs", "parrainage": "Parrainage",
+    "inbox": "Messages", "certificates": "Certificats", "quality": "Qualité",
+    "contracts": "Contrats",
+    "priceAlerts": "Alertes prix",
+    "logistics": "Logistique",
+    "favoris": "Favoris", "demand": "Demandes", "impact": "Impact",
+    "agent": "Agent"
+  },
+  "role": {
+    "producteur": "Producteur", "acheteur": "Acheteur",
+    "transporteur": "Transporteur", "intermediaire": "Intermédiaire",
+    "agent": "Agent de terrain",
+    "switchRole": "Changer de rôle"
+  },
+  "lots": {
+    "title": "Mes lots", "marketTitle": "Catalogue",
+    "searchPlaceholder": "Rechercher par culture, région...",
+    "noLots": "Aucun lot", "price": "Prix", "quantity": "Quantité",
+    "origin": "Origine", "certification": "Certification", "status": "Statut",
+    "producer": "Producteur", "add": "Publier un lot", "edit": "Modifier le lot",
+    "culture": "Culture", "region": "Région", "qualite": "Qualité",
+    "gps": "Coordonnées GPS", "badge": "Badge",
+    "all": "Tous", "disponible": "Disponible", "reserve": "Réservé", "vendu": "Vendu"
+  },
+  "offers": {
+    "title": "Appels d'offre", "create": "Lancer un appel d'offre",
+    "noOffers": "Aucun appel d'offre", "culture": "Produit recherché",
+    "quantite": "Quantité", "prixMin": "Prix min", "prixMax": "Prix max",
+    "region": "Région", "dateLimite": "Date limite", "qualite": "Qualité requise",
+    "statut": "Statut", "ouvert": "Ouvert", "clos": "Fermé", "attribue": "Attribué",
+    "repondre": "Répondre à l'offre",
+    "requiredFields": "Remplissez tous les champs obligatoires",
+    "toutes": "Toutes",
+    "mes": "Mes offres",
+    "fermer": "Fermer l'appel d'offre",
+    "created": "Appel d'offre lancé",
+    "quantiteMin": "Tonnes min",
+    "quantiteMax": "Tonnes max"
+  },
+  "commerce": {
+    "title": "Commerce Act", "create": "Nouvel acte",
+    "noActs": "Aucun acte", "transaction": "Transaction",
+    "montant": "Montant", "produit": "Produit", "quantite": "Quantité",
+    "prixUnitaire": "Prix unitaire", "lieu": "Lieu de signature",
+    "gps": "Coordonnées GPS", "temoins": "Témoins",
+    "addTemoin": "Ajouter un témoin", "nom": "Nom", "phone": "Téléphone",
+    "role": "Rôle (ex: Chef village, Agent)", "photoPreuve": "Photo preuve",
+    "etalonnage": "Étalonnage métrique", "qrSeal": "Sceau QR",
+    "blockchain": "Hash blockchain", "pdf": "Exporter PDF",
+    "signer": "Signer l'acte", "signedAt": "Signé le",
+    "regle": "Avec règle", "billet": "Avec billet", "piece": "Avec pièce",
+    "smartphone": "Avec smartphone", "takePhoto": "Prendre la photo"
+  },
+  "kyc": {
+    "title": "Vérification KYC", "level": "Niveau",
+    "level0": "Non vérifié", "level1": "Niveau 1 — CNI + Selfie",
+    "level2": "Niveau 2 — Justificatif domicile", "level3": "Niveau 3 — Agent terrain",
+    "cni": "Photo CNI", "cniNumber": "N° CNI", "selfie": "Selfie",
+    "residence": "Justificatif de domicile", "agent": "Vérification agent terrain",
+    "agentId": "ID Agent", "submit": "Soumettre", "pending": "En attente",
+    "verified": "Vérifié", "rejected": "Rejeté", "required": "Obligatoire pour vendre"
+  },
+  "transport": {
+    "title": "Mes missions", "noMissions": "Aucune mission",
+    "myMissions": "Mes missions", "available": "Fret disponible",
+    "origine": "Origine", "destination": "Destination",
+    "corridor": "Corridor", "dateChargement": "Date chargement",
+    "statut": "Statut", "affectee": "Affectée", "chargee": "Chargée",
+    "en_route": "En route", "arrivee": "Arrivée", "livree": "Livrée",
+    "avanceCarburant": "Avance carburant", "avanceVersee": "Avance versée",
+    "checkIn": "Check-in au péage", "groupage": "Groupage",
+    "pointCollecte": "Point de collecte"
+  },
+  "groupage": {
+    "title": "Groupage", "create": "Créer un groupage",
+    "corridor": "Corridor linéaire", "pointCollecte": "Point bord de voie",
+    "lots": "Lots groupés", "coutProrata": "Coût au prorata",
+    "noGroupage": "Aucun groupage", "join": "Rejoindre le groupage"
+  },
+  "talkie": {
+    "title": "Talkie", "record": "Enregistrer", "stop": "Arrêter",
+    "playing": "Lecture...", "noMessages": "Aucun message",
+    "holdToRecord": "Maintenir pour enregistrer", "send": "Envoyer"
+  },
+  "market": {
+    "title": "Marché du Soir", "bulletin": "Bulletin du",
+    "corridor": "Corridor de prix", "produit": "Produit",
+    "region": "Région", "prixMin": "Min", "prixMax": "Max",
+    "spread": "Spread", "tendance": "Tendance",
+    "hausse": "Hausse", "baisse": "Baisse", "stable": "Stable",
+    "noData": "Aucune donnée marché",
+    "previsions": "Prévisions", "prixPrediction": "Prix prévu",
+    "volumePrediction": "Volume prévu", "saison": "Saison",
+    "confiance": "Intervalle de confiance"
+  },
+  "escrow": {
+    "title": "Séquestre", "deposit": "Déposer les fonds",
+    "release": "Libérer", "status": "Statut",
+    "held": "Fonds séquestrés", "released": "Libérés",
+    "refunded": "Remboursés", "fee": "Frais de séquestre",
+    "amount": "Montant séquestré", "reference": "Référence",
+    "newDeposit": "Nouveau dépôt", "confirmDeposit": "Confirmer le dépôt",
+    "montant": "Montant", "frais": "Frais", "total": "Total bloqué",
+    "depositSuccess": "Dépôt réussi",
+    "bceaoOrder": "Ordre direct — AgriTrace ne détient jamais les fonds",
+    "bceaoOrderDesc": "📋 Les fonds sont transférés via ordre de paiement direct. AgriTrace ne détient, ne gère et ne conserve jamais les fonds des clients. Les 2% sont une garantie de service.",
+    "securedBy": "Sécurisé par contrat traçable",
+    "bceaoRule": "Frais de séquestre 2% — infiniment moins cher que perdre 100% de la cargaison. Les fonds transitent par ordre direct, jamais détenus par AgriTrace.",
+    "block": "Bloquer les fonds"
+  },
+  "payout": {
+    "title": "Paiements", "stats": "Statistiques",
+    "totalDisbursed": "Total versé", "totalTransactions": "Transactions",
+    "successRate": "Taux de succès", "pending": "En attente",
+    "history": "Historique", "noPayouts": "Aucun paiement",
+    "initiate": "Effectuer un paiement", "amount": "Montant",
+    "phone": "Téléphone", "provider": "Opérateur", "submit": "Envoyer",
+    "success": "Paiement envoyé", "mtn": "MTN MoMo",
+    "moov": "Moov Money", "orange": "Orange Money"
+  },
+  "financing": {
+    "title": "Financement", "eligibility": "Éligible",
+    "maxAmount": "Montant max", "activeContracts": "Contrats actifs",
+    "repaymentRate": "Taux remboursement", "availableOffers": "Offres",
+    "apply": "Soumettre", "applySuccess": "Demande soumise",
+    "amount": "Montant", "collateralRef": "Référence garantie",
+    "scoreMin": "Score min", "noContracts": "Aucun contrat",
+    "repayable": "Remboursable", "repayNow": "Rembourser"
+  },
+  "scan": {"title": "Scanner QR", "instruction": "Placez le QR dans le cadre", "result": "Lot scanné"},
+  "settings": {
+    "title": "Paramètres", "language": "Langue", "french": "Français",
+    "english": "Anglais", "theme": "Thème", "light": "Clair",
+    "dark": "Sombre", "logout": "Déconnexion",
+    "logoutConfirm": "Confirmer la déconnexion ?",
+    "profile": "Profil", "company": "Entreprise", "country": "Pays",
+    "role": "Rôle", "badge": "Badge", "kyc": "Niveau KYC",
+    "creditScore": "Score crédit", "trustScore": "Score confiance",
+    "version": "Version"
+  }
+}

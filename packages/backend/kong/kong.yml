@@ -1,0 +1,260 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: auth-service
+    host: auth-service
+    port: 3000
+    protocol: http
+    routes:
+      - name: auth-register
+        paths: ["/auth/register"]
+        methods: ["POST"]
+        strip_path: false
+      - name: auth-login
+        paths: ["/auth/login"]
+        methods: ["POST"]
+        strip_path: false
+      - name: auth-admin-login
+        paths: ["/auth/admin/login"]
+        methods: ["POST"]
+        strip_path: false
+      - name: auth-logout
+        paths: ["/auth/logout"]
+        methods: ["POST"]
+        strip_path: false
+      - name: auth-refresh
+        paths: ["/auth/refresh"]
+        methods: ["POST"]
+        strip_path: false
+      - name: auth-forgot-password
+        paths: ["/auth/forgot-password"]
+        methods: ["POST"]
+        strip_path: false
+      - name: auth-profile
+        paths: ["/auth/profile"]
+        methods: ["GET", "PATCH"]
+        strip_path: false
+
+  - name: parcelle-service
+    host: parcelle-service
+    port: 3001
+    protocol: http
+    routes:
+      - name: parcelle-crud
+        paths: ["/parcelles"]
+        methods: ["GET", "POST"]
+        strip_path: false
+      - name: parcelle-detail
+        paths: ["/parcelles/~[/d]+$"]
+        methods: ["GET", "PATCH", "DELETE"]
+        strip_path: false
+
+  - name: traceability-service
+    host: traceability-service
+    port: 8080
+    protocol: http
+    routes:
+      - name: lots
+        paths: ["/lots"]
+        methods: ["GET", "POST"]
+        strip_path: false
+      - name: lot-detail
+        paths: ["/lots/~[/d]+$"]
+        methods: ["GET", "PATCH"]
+        strip_path: false
+      - name: transfer
+        paths: ["/transfer"]
+        methods: ["POST"]
+        strip_path: false
+      - name: scan
+        paths: ["/scan"]
+        methods: ["POST"]
+        strip_path: false
+
+  - name: certification-service
+    host: certification-service
+    port: 3002
+    protocol: http
+    routes:
+      - name: certificates
+        paths: ["/certificates"]
+        methods: ["GET", "POST"]
+        strip_path: false
+
+  - name: payment-service
+    host: api-service
+    port: 3000
+    protocol: http
+    routes:
+      - name: payment-methods
+        paths: ["/api/payment/methods"]
+        methods: ["GET"]
+        strip_path: false
+      - name: payment-initiate
+        paths: ["/api/payment/initiate"]
+        methods: ["POST"]
+        strip_path: false
+      - name: payment-webhook
+        paths: ["/api/payment/webhook/[a-z_]+"]
+        methods: ["POST"]
+        strip_path: false
+      - name: payment-detail
+        paths: ["/api/payment/[a-f0-9-]+"]
+        methods: ["GET"]
+        strip_path: false
+      - name: payment-list
+        paths: ["/api/payments"]
+        methods: ["GET"]
+        strip_path: false
+      - name: payment-verify
+        paths: ["/api/payment/[a-f0-9-]+/verify"]
+        methods: ["POST"]
+        strip_path: false
+      - name: payment-stats
+        paths: ["/api/payment/stats"]
+        methods: ["GET"]
+        strip_path: false
+      - name: payment-invoice
+        paths: ["/api/payment/[a-f0-9-]+/invoice"]
+        methods: ["POST"]
+        strip_path: false
+      - name: payment-crypto
+        paths: ["/api/payment/[a-f0-9-]+/crypto"]
+        methods: ["POST"]
+        strip_path: false
+      - name: payment-crypto-check
+        paths: ["/api/payment/[a-f0-9-]+/crypto/check"]
+        methods: ["GET"]
+        strip_path: false
+
+  - name: escrow-service
+    host: api-service
+    port: 3000
+    protocol: http
+    routes:
+      - name: escrow-create
+        paths: ["/api/escrow$"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-fund
+        paths: ["/api/escrow/[a-f0-9-]+/fund"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-deliver
+        paths: ["/api/escrow/[a-f0-9-]+/deliver"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-confirm
+        paths: ["/api/escrow/[a-f0-9-]+/confirm"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-release
+        paths: ["/api/escrow/[a-f0-9-]+/release"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-dispute
+        paths: ["/api/escrow/[a-f0-9-]+/dispute"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-resolve
+        paths: ["/api/escrow/[a-f0-9-]+/resolve"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-cancel
+        paths: ["/api/escrow/[a-f0-9-]+/cancel"]
+        methods: ["POST"]
+        strip_path: false
+      - name: escrow-detail
+        paths: ["/api/escrow/[a-f0-9-]+$"]
+        methods: ["GET"]
+        strip_path: false
+      - name: escrow-list
+        paths: ["/api/escrows"]
+        methods: ["GET"]
+        strip_path: false
+      - name: escrow-stats
+        paths: ["/api/escrow/stats"]
+        methods: ["GET"]
+        strip_path: false
+
+  - name: prediction-service
+    host: api-service
+    port: 3000
+    protocol: http
+    routes:
+      - name: prediction-generate
+        paths: ["/api/prediction/generate"]
+        methods: ["POST"]
+        strip_path: false
+      - name: prediction-get
+        paths: ["/api/prediction/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+$"]
+        methods: ["GET"]
+        strip_path: false
+      - name: prediction-backtest
+        paths: ["/api/prediction/backtest"]
+        methods: ["POST"]
+        strip_path: false
+      - name: prediction-accuracy
+        paths: ["/api/prediction/accuracy/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+"]
+        methods: ["GET"]
+        strip_path: false
+      - name: prediction-summary
+        paths: ["/api/prediction/summary"]
+        methods: ["GET"]
+        strip_path: false
+      - name: prediction-markets
+        paths: ["/api/prediction/markets"]
+        methods: ["GET"]
+        strip_path: false
+
+  - name: satellite-ai-service
+    host: satellite-ai-service
+    port: 8000
+    protocol: http
+    routes:
+      - name: ai-health
+        paths: ["/ai/health"]
+        methods: ["GET"]
+        strip_path: false
+      - name: deforestation-check
+        paths: ["/ai/deforestation/check"]
+        methods: ["GET"]
+        strip_path: false
+      - name: yield-predict
+        paths: ["/ai/yield/predict"]
+        methods: ["GET", "POST"]
+        strip_path: false
+
+plugins:
+  - name: rate-limiting
+    config:
+      minute: 60
+      hour: 1000
+      policy: local
+  - name: rate-limiting
+    route: auth-login
+    config:
+      minute: 5
+      policy: local
+      fault_tolerant: false
+      hide_client_headers: false
+      limit_by: ip
+  - name: rate-limiting
+    route: auth-admin-login
+    config:
+      minute: 5
+      policy: local
+      fault_tolerant: false
+      hide_client_headers: false
+      limit_by: ip
+  - name: cors
+    config:
+      origins: ["*"]
+      methods: ["GET", "POST", "PATCH", "DELETE"]
+      headers: ["Content-Type", "Authorization"]
+  - name: jwt
+    config:
+      key_claim_name: iss
+      secret_is_base64: false
+      run_on_preflight: true

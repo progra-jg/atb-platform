@@ -1,0 +1,22 @@
+[permissions]
+enabled = true
+
+[accounts]
+# Node 1 validator
+"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73" = ["VALIDATOR"]
+# Node 2 validator
+"0x627306090abab3a6e1400e9345bc60c78a8bef57" = ["VALIDATOR"]
+# Node 3 validator
+"0xf17f52151ebef6c7334fad080c5704d77216b732" = ["VALIDATOR"]
+# Admin account
+"0x3c5b1c2e6b1c1a5e1e5c1b2a3b4c5d6e7f8a9b0c" = ["ADMIN"]
+
+[nodes]
+allowlist = [
+  "enode://node1@10.0.1.10:30303",
+  "enode://node2@10.0.1.11:30303",
+  "enode://node3@10.0.1.12:30303",
+  "enode://node4@10.0.1.13:30303",
+  "enode://node5@10.0.1.14:30303",
+  "enode://node6@10.0.1.15:30303"
+]

@@ -1,0 +1,15 @@
+{
+  "name": "ATB AgriTrace — Place de Marché B2B AgriTech",
+  "short_name": "ATB AgriTrace",
+  "description": "Plateforme B2B de traçabilité agricole blockchain — lots certifiés EUDR, GlobalGAP, escrow sécurisé.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b09",
+  "theme_color": "#0a6e4a",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "categories": ["business", "agriculture", "marketplace"],
+  "lang": "fr"
+}

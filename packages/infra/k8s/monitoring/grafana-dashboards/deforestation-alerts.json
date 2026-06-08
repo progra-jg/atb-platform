@@ -1,0 +1,8 @@
+{
+  "title": "Alertes Déforestation",
+  "panels": [
+    {"title": "Alertes par sévérité", "type": "piechart", "targets": [{"expr": "count by(severity) (deforestation_alerts_total)"}]},
+    {"title": "Surface déforestée (ha)", "type": "graph", "targets": [{"expr": "deforestation_area_ha"}]},
+    {"title": "Alertes non résolues", "type": "stat", "targets": [{"expr": "deforestation_alerts_total{status='pending'}"}]}
+  ]
+}

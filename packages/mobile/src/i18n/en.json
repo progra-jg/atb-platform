@@ -1,0 +1,171 @@
+{
+  "common": {
+    "loading": "Loading...", "error": "An error occurred", "retry": "Retry",
+    "cancel": "Cancel", "confirm": "Confirm", "send": "Send", "sending": "Sending...",
+    "success": "Success", "yes": "Yes", "no": "No", "search": "Search", "save": "Save",
+    "phone": "Phone", "gps": "GPS", "date": "Date", "amount": "Amount", "status": "Status",
+    "close": "Close", "delete": "Delete", "edit": "Edit", "share": "Share"
+  },
+  "nav": {
+    "lots": "Lots", "payout": "Payments", "financing": "Financing",
+    "scan": "Scan", "settings": "Settings",
+    "dashboard": "Dashboard", "orders": "Orders", "negotiations": "Negotiations", "payments": "Payments",
+    "market": "Market", "offers": "Tenders", "transport": "Transport",
+    "talkie": "Talkie", "commerce": "Commerce Act", "kyc": "KYC",
+    "groupage": "Groupage", "previsions": "Forecasts",
+    "trust": "Trust & Reputation",
+    "bulletins": "Evening Market",
+    "meteo": "Weather", "annuaire": "Producers", "parrainage": "Referrals",
+    "inbox": "Messages", "certificates": "Certificates", "quality": "Quality",
+    "contracts": "Contracts",
+    "priceAlerts": "Price Alerts",
+    "logistics": "Logistics",
+    "favoris": "Favorites", "demand": "Demand", "impact": "Impact",
+    "agent": "Agent"
+  },
+  "role": {
+    "producteur": "Producer", "acheteur": "Buyer",
+    "transporteur": "Transporter", "intermediaire": "Intermediary",
+    "agent": "Field Agent",
+    "switchRole": "Switch role"
+  },
+  "lots": {
+    "title": "My lots", "marketTitle": "Catalogue",
+    "searchPlaceholder": "Search by crop, region...",
+    "noLots": "No lots", "price": "Price", "quantity": "Quantity",
+    "origin": "Origin", "certification": "Certification", "status": "Status",
+    "producer": "Producer", "add": "Publish a lot", "edit": "Edit lot",
+    "culture": "Crop", "region": "Region", "qualite": "Quality",
+    "gps": "GPS coordinates", "badge": "Badge",
+    "all": "All", "disponible": "Available", "reserve": "Reserved", "vendu": "Sold"
+  },
+  "offers": {
+    "title": "Tenders", "create": "Launch a tender",
+    "noOffers": "No tenders", "culture": "Product needed",
+    "quantite": "Quantity", "prixMin": "Min price", "prixMax": "Max price",
+    "region": "Region", "dateLimite": "Deadline", "qualite": "Quality required",
+    "statut": "Status", "ouvert": "Open", "clos": "Closed", "attribue": "Awarded",
+    "repondre": "Respond to tender",
+    "requiredFields": "Fill in all required fields",
+    "toutes": "All",
+    "mes": "My tenders",
+    "fermer": "Close tender",
+    "created": "Tender launched",
+    "quantiteMin": "Min tons",
+    "quantiteMax": "Max tons"
+  },
+  "commerce": {
+    "title": "Commerce Act", "create": "New act",
+    "noActs": "No acts", "transaction": "Transaction",
+    "montant": "Amount", "produit": "Product", "quantite": "Quantity",
+    "prixUnitaire": "Unit price", "lieu": "Signature location",
+    "gps": "GPS coordinates", "temoins": "Witnesses",
+    "addTemoin": "Add witness", "nom": "Name", "phone": "Phone",
+    "role": "Role (e.g. Village chief, Agent)", "photoPreuve": "Evidence photo",
+    "etalonnage": "Metric calibration", "qrSeal": "QR seal",
+    "blockchain": "Blockchain hash", "pdf": "Export PDF",
+    "signer": "Sign the act", "signedAt": "Signed on",
+    "regle": "With ruler", "billet": "With banknote", "piece": "With coin",
+    "smartphone": "With smartphone", "takePhoto": "Take photo"
+  },
+  "kyc": {
+    "title": "KYC Verification", "level": "Level",
+    "level0": "Unverified", "level1": "Level 1 — ID + Selfie",
+    "level2": "Level 2 — Proof of residence", "level3": "Level 3 — Field agent",
+    "cni": "ID photo", "cniNumber": "ID number", "selfie": "Selfie",
+    "residence": "Proof of residence", "agent": "Field agent verification",
+    "agentId": "Agent ID", "submit": "Submit", "pending": "Pending",
+    "verified": "Verified", "rejected": "Rejected", "required": "Required to sell"
+  },
+  "transport": {
+    "title": "My missions", "noMissions": "No missions",
+    "myMissions": "My missions", "available": "Available freight",
+    "origine": "Origin", "destination": "Destination",
+    "corridor": "Corridor", "dateChargement": "Loading date",
+    "statut": "Status", "affectee": "Assigned", "chargee": "Loaded",
+    "en_route": "En route", "arrivee": "Arrived", "livree": "Delivered",
+    "avanceCarburant": "Fuel advance", "avanceVersee": "Advance paid",
+    "checkIn": "Toll check-in", "groupage": "Groupage",
+    "pointCollecte": "Collection point",
+    "commissionRetour": "Return freight commission",
+    "fretRetourDesc": "5-7% commission only on return trips optimized by AgriTrace. Transporter keeps 100% of main trip — commission only on volume you wouldn't have had without us."
+  },
+  "groupage": {
+    "title": "Groupage", "create": "Create groupage",
+    "corridor": "Linear corridor", "pointCollecte": "Roadside point",
+    "lots": "Grouped lots", "coutProrata": "Prorated cost",
+    "noGroupage": "No groupage", "join": "Join groupage"
+  },
+  "talkie": {
+    "title": "Talkie", "record": "Record", "stop": "Stop",
+    "playing": "Playing...", "noMessages": "No messages",
+    "holdToRecord": "Hold to record", "send": "Send"
+  },
+  "market": {
+    "title": "Evening Market", "bulletin": "Bulletin of",
+    "corridor": "Price corridor", "produit": "Product",
+    "region": "Region", "prixMin": "Min", "prixMax": "Max",
+    "spread": "Spread", "tendance": "Trend",
+    "hausse": "Up", "baisse": "Down", "stable": "Stable",
+    "noData": "No market data",
+    "previsions": "Forecasts", "prixPrediction": "Predicted price",
+    "volumePrediction": "Predicted volume", "saison": "Season",
+    "confiance": "Confidence interval",
+    "producteur": "Producer", "acheteur": "Buyer"
+  },
+  "marcheSoir": {
+    "title": "Evening Market",
+    "desc": "Automated price bulletin sent daily at 6pm via push notification, SMS, and USSD. Subscribe to your products and regions.",
+    "preferences": "Bulletin preferences",
+    "actif": "Active daily bulletin",
+    "heure": "Send time",
+    "envoyer": "Send now",
+    "programmer": "Schedule daily",
+    "bulletin": "Today's bulletin"
+  },
+  "escrow": {
+    "title": "Escrow", "deposit": "Deposit funds",
+    "release": "Release", "status": "Status",
+    "held": "Funds held", "released": "Released",
+    "refunded": "Refunded", "fee": "Escrow fee",
+    "amount": "Escrowed amount", "reference": "Reference",
+    "newDeposit": "New deposit", "confirmDeposit": "Confirm deposit",
+    "montant": "Amount", "frais": "Fee", "total": "Total blocked",
+    "depositSuccess": "Deposit successful",
+    "bceaoOrder": "Direct order — AgriTrace never holds funds",
+    "bceaoOrderDesc": "📋 Funds are transferred via direct payment order. AgriTrace never holds, manages, or custody client funds. 2% fee is a service guarantee.",
+    "securedBy": "Secured by traceable contract",
+    "bceaoRule": "2% escrow fee — infinitely cheaper than losing 100% of cargo. Funds move via direct order, never held by AgriTrace.",
+    "block": "Block funds"
+  },
+  "payout": {
+    "title": "Payments", "stats": "Statistics",
+    "totalDisbursed": "Total disbursed", "totalTransactions": "Transactions",
+    "successRate": "Success rate", "pending": "Pending",
+    "history": "History", "noPayouts": "No payments",
+    "initiate": "Make a payment", "amount": "Amount",
+    "phone": "Phone", "provider": "Provider", "submit": "Send",
+    "success": "Payment sent", "mtn": "MTN MoMo",
+    "moov": "Moov Money", "orange": "Orange Money"
+  },
+  "financing": {
+    "title": "Financing", "eligibility": "Eligible",
+    "maxAmount": "Max amount", "activeContracts": "Active contracts",
+    "repaymentRate": "Repayment rate", "availableOffers": "Offers",
+    "apply": "Submit", "applySuccess": "Application submitted",
+    "amount": "Amount", "collateralRef": "Collateral ref",
+    "scoreMin": "Min score", "noContracts": "No contracts",
+    "repayable": "Repayable", "repayNow": "Repay now"
+  },
+  "scan": {"title": "QR Scan", "instruction": "Place QR inside frame", "result": "Scanned lot"},
+  "settings": {
+    "title": "Settings", "language": "Language", "french": "French",
+    "english": "English", "theme": "Theme", "light": "Light",
+    "dark": "Dark", "logout": "Logout",
+    "logoutConfirm": "Confirm logout?",
+    "profile": "Profile", "company": "Company", "country": "Country",
+    "role": "Role", "badge": "Badge", "kyc": "KYC Level",
+    "creditScore": "Credit score", "trustScore": "Trust score",
+    "version": "Version"
+  }
+}

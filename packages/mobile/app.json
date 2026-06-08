@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "ATB AgriTrace",
+    "slug": "agritrace-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#059669",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.atb.agritrace",
+      "infoPlist": {
+        "NSCameraUsageDescription": "L'app utilise l'appareil photo pour scanner les QR codes des lots et certificats.",
+        "NSMicrophoneUsageDescription": "L'app utilise le microphone pour les messages vocaux (Talkie)."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#059669"
+      },
+      "package": "com.atb.agritrace",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "agritrace",
+              "host": "*",
+              "pathPrefix": "/payment"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "plugins": [
+      "expo-camera",
+      "expo-secure-store",
+      "expo-sqlite",
+      "expo-notifications"
+    ],
+    "extra": {
+      "apiUrl": "https://api.agritrace.bj/api"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: atb-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: atb
+      POSTGRES_PASSWORD: atb_dev_2024
+      POSTGRES_DB: atb_agritrace
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./packages/backend/init-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./packages/backend/seed-data.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atb -d atb_agritrace"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: ./packages/backend/services/api
+    container_name: atb-api
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      API_PORT: "4000"
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_USER: atb
+      DB_PASS: atb_dev_2024
+      DB_NAME: atb_agritrace
+      JWT_SECRET: atb_jwt_secret_dev_2024
+      SENTINEL_MODE: mock
+      FEDAPAY_WEBHOOK_SECRET: ${FEDAPAY_WEBHOOK_SECRET:-fedapay_webhook_secret_dev}
+      FEDAPAY_API_KEY: ${FEDAPAY_API_KEY:-}
+      CINETPAY_API_KEY: ${CINETPAY_API_KEY:-}
+      CINETPAY_SITE_ID: ${CINETPAY_SITE_ID:-}
+      MTN_MOMO_API_USER: ${MTN_MOMO_API_USER:-}
+      MTN_MOMO_API_KEY: ${MTN_MOMO_API_KEY:-}
+      MTN_MOMO_SUBSCRIPTION_KEY: ${MTN_MOMO_SUBSCRIPTION_KEY:-}
+      MANSA_API_KEY: ${MANSA_API_KEY:-}
+      MANSA_EMAIL: ${MANSA_EMAIL:-api@atb.bj}
+      API_PUBLIC_URL: ${API_PUBLIC_URL:-http://localhost:4000}
+      WEBAPP_URL: ${WEBAPP_URL:-http://localhost:5174}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web-buyer:
+    build:
+      context: ./packages/web-buyer
+      args:
+        VITE_API_URL: /api
+    container_name: atb-web-buyer
+    restart: unless-stopped
+    ports:
+      - "5174:80"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:

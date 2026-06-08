@@ -1,0 +1,250 @@
+openapi: "3.0.3"
+info:
+  title: ATB AgriTrace API
+  version: "1.0.0"
+  description: API de traçabilité agricole blockchain
+
+servers:
+  - url: https://api.agritrace.bj
+    description: Production
+  - url: http://localhost:8000
+    description: Local dev
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  # Auth
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Inscription utilisateur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                phone: { type: string }
+                password: { type: string }
+                role: { type: string, enum: [farmer, buyer] }
+      responses:
+        "201": { description: Compte créé }
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Connexion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone: { type: string }
+                password: { type: string }
+      responses:
+        "200": { description: Token JWT }
+
+  # Parcelles
+  /parcelles:
+    get:
+      tags: [Parcelles]
+      summary: Liste des parcelles
+      security: [{ BearerAuth: [] }]
+      responses:
+        "200": { description: Liste des parcelles }
+    post:
+      tags: [Parcelles]
+      summary: Créer une parcelle
+      security: [{ BearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                polygone: { type: array }
+                superficie: { type: number }
+                culture: { type: string }
+      responses:
+        "201": { description: Parcelle créée }
+
+  # Lots (Traceability)
+  /api/lots:
+    post:
+      tags: [Lots]
+      summary: Créer un lot
+      security: [{ BearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                owner: { type: string }
+                culture: { type: string }
+                quantite: { type: number }
+      responses:
+        "201": { description: Lot créé avec QR code }
+
+  /api/lots/{id}:
+    get:
+      tags: [Lots]
+      summary: Détails d'un lot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Détails du lot }
+
+  /api/transfer:
+    post:
+      tags: [Lots]
+      summary: Transférer un lot
+      security: [{ BearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lot_id: { type: string }
+                from: { type: string }
+                to: { type: string }
+                signature: { type: string }
+      responses:
+        "201": { description: Transfert effectué }
+
+  /api/scan:
+    post:
+      tags: [Lots]
+      summary: Scanner un QR code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                qr_data: { type: string }
+      responses:
+        "200": { description: Informations du lot }
+
+  # Certificates
+  /certificates/generate:
+    post:
+      tags: [Certificats]
+      summary: Générer un certificat
+      security: [{ BearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lotId: { type: string }
+                type: { type: string, enum: [EUDR, GlobalGAP] }
+      responses:
+        "201": { description: Certificat généré }
+
+  # AI
+  /ai/health:
+    get:
+      tags: [AI]
+      summary: Health check AI
+      responses:
+        "200": { description: Status }
+
+  /ai/deforestation/check/{parcelle_id}:
+    get:
+      tags: [AI]
+      summary: Vérifier déforestation
+      parameters:
+        - name: parcelle_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Résultat vérification }
+
+  /ai/yield/predict:
+    post:
+      tags: [AI]
+      summary: Prédire rendement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parcelle_id: { type: string }
+                time_series: { type: array }
+      responses:
+        "200": { description: Prédiction }
+
+  # Marketplace
+  /marketplace/products:
+    get:
+      tags: [Marketplace]
+      summary: Liste des produits
+      responses:
+        "200": { description: Catalogue }
+
+  /marketplace/orders:
+    post:
+      tags: [Marketplace]
+      summary: Créer commande
+      security: [{ BearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                producteurId: { type: string }
+                items: { type: array }
+      responses:
+        "201": { description: Commande créée }
+
+  # Carbon
+  /carbon/balance/{cooperative_id}:
+    get:
+      tags: [Carbone]
+      summary: Solde crédits carbone
+      parameters:
+        - name: cooperative_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Solde }
+
+  /carbon/mint:
+    post:
+      tags: [Carbone]
+      summary: Mint crédits carbone
+      responses:
+        "201": { description: Crédits calculés }
+
+  /carbon/marketplace:
+    get:
+      tags: [Carbone]
+      summary: Marketplace crédits
+      responses:
+        "200": { description: Offres disponibles }

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "atb",
+    "password": "atb_dev_2024",
+    "database": "atb_agritrace",
+    "entities": ["services/*/src/**/*.entity{.ts,.js}"],
+    "migrations": ["services/*/src/migrations/*{.ts,.js}"],
+    "cli": {
+      "migrationsDir": "services/auth/src/migrations"
+    }
+  }
+]

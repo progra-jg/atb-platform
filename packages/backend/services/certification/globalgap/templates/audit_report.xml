@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalGAPAuditReport>
+    <Farm>
+        <Name>{{ farm.name }}</Name>
+        <Address>{{ farm.address }}</Address>
+        <RegistrationNumber>{{ farm.registration }}</RegistrationNumber>
+    </Farm>
+    <Audit>
+        <Date>{{ audit.date }}</Date>
+        <Auditor>{{ audit.auditor }}</Auditor>
+        <Score>{{ audit.score }}</Score>
+        <Certified>{{ audit.certified }}</Certified>
+    </Audit>
+    <ControlPoints>
+        {% for category, points in checklist.items() %}
+        <Category name="{{ category }}">
+            {% for point in points %}
+            <ControlPoint>
+                <Requirement>{{ point.control_point }}</Requirement>
+                <Compliant>{{ point.compliant }}</Compliant>
+                <Finding>{{ point.finding }}</Finding>
+            </ControlPoint>
+            {% endfor %}
+        </Category>
+        {% endfor %}
+    </ControlPoints>
+</GlobalGAPAuditReport>

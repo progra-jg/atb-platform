@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "P-001",
+        "owner": "Kouassi Amadou",
+        "culture": "Cacao",
+        "superficie": 1.5,
+        "village": "Zogbodomey",
+        "cooperative": "Coop Zou"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.5, 8.5], [2.6, 8.5], [2.6, 8.6], [2.5, 8.6], [2.5, 8.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "P-002",
+        "owner": "Sika Bénédicte",
+        "culture": "Coton",
+        "superficie": 2.0,
+        "village": "Bohicon",
+        "cooperative": "Coop Zou"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.1, 8.2], [2.2, 8.2], [2.2, 8.3], [2.1, 8.3], [2.1, 8.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "P-003",
+        "owner": "Adéchina Paul",
+        "culture": "Anacarde",
+        "superficie": 3.0,
+        "village": "Parakou",
+        "cooperative": "Coop Borgou"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[3.5, 9.3], [3.6, 9.3], [3.6, 9.4], [3.5, 9.4], [3.5, 9.3]]]
+      }
+    }
+  ]
+}

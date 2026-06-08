@@ -1,0 +1,8 @@
+{
+  "title": "Producteurs Actifs",
+  "panels": [
+    {"title": "Producteurs par région", "type": "barchart", "targets": [{"expr": "count by(region) (farmer_registered_total)"}]},
+    {"title": "Nouveaux inscriptions/semaine", "type": "graph", "targets": [{"expr": "rate(farmer_registered_total[7d])"}]},
+    {"title": "Lots par producteur", "type": "heatmap", "targets": [{"expr": "farmer_lots_total"}]}
+  ]
+}

@@ -1,0 +1,16 @@
+VIDÉO 1 — Présentation ATB AgriTrace (2 min)
+
+[00:00-00:15] Introduction
+"ATB AgriTrace est la première plateforme de traçabilité agricole basée sur la blockchain au Bénin."
+
+[00:15-00:45] Problème
+"Chaque année, des milliers de tonnes de cacao, coton et anacarde sont exportées sans traçabilité. Les producteurs ne sont pas récompensés pour leurs efforts de durabilité."
+
+[00:45-01:15] Solution
+"ATB AgriTrace permet de tracer chaque lot du producteur à l'exportateur, avec des certificats EUDR et GlobalGAP vérifiés sur la blockchain."
+
+[01:15-01:45] Bénéfices
+"Pour les producteurs: prime à la traçabilité. Pour les acheteurs: conformité EUDR garantie."
+
+[01:45-02:00] Call to action
+"Rejoignez ATB AgriTrace dès aujourd'hui."

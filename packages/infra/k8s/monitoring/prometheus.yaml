@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: atb-monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+    scrape_configs:
+      - job_name: 'kubernetes-pods'
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_label_app]
+            action: keep
+            regex: '.*-service'
+
+      - job_name: 'besu-node'
+        static_configs:
+          - targets: ['besu-node:9545']
+
+      - job_name: 'api-gateway'
+        static_configs:
+          - targets: ['kong:8001']
+
+      - job_name: 'iot-devices'
+        static_configs:
+          - targets: ['iot-bridge:8001']

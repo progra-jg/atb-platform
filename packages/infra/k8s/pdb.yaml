@@ -1,0 +1,32 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: api-service-pdb
+  namespace: atb-prod
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: api-service
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: traceability-pdb
+  namespace: atb-prod
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: traceability-service
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web-pdb
+  namespace: atb-prod
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: web-buyer

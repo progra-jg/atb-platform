@@ -1,0 +1,16 @@
+severity:
+  - HIGH
+  - CRITICAL
+
+vulnerability:
+  ignore-unfixed: true
+
+scan:
+  skip-dirs:
+    - node_modules/
+    - .git/
+    - __pycache__/
+
+output:
+  format: table
+  exit-code: 1

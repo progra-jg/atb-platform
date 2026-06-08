@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DueDiligenceStatement xmlns="https://ec.europa.eu/trade/eudr/2023">
+    <Operator>
+        <Name>{{ operator.name }}</Name>
+        <Address>{{ operator.address }}</Address>
+        <Country>{{ operator.country }}</Country>
+    </Operator>
+    <Lot>
+        <LotID>{{ lot.id }}</LotID>
+        <Product>{{ lot.product }}</Product>
+        <Quantity>{{ lot.quantity }}</Quantity>
+        <CountryOfProduction>{{ lot.country }}</CountryOfProduction>
+        <DateOfHarvest>{{ lot.harvest_date }}</DateOfHarvest>
+    </Lot>
+    <Geolocation>
+        {% for parcelle in lot.parcelles %}
+        <Plot>
+            <PlotID>{{ parcelle.id }}</PlotID>
+            <Area>{{ parcelle.area }}</Area>
+            <Coordinates>
+                {% for lat, lng in parcelle.coordinates %}
+                <Point>
+                    <Latitude>{{ lat }}</Latitude>
+                    <Longitude>{{ lng }}</Longitude>
+                </Point>
+                {% endfor %}
+            </Coordinates>
+        </Plot>
+        {% endfor %}
+    </Geolocation>
+    <DeforestationCheck>
+        <Compliant>{{ deforestation.compliant }}</Compliant>
+        <CheckDate>{{ deforestation.check_date }}</CheckDate>
+        <Methodology>Satellite imagery analysis (Sentinel-2)</Methodology>
+    </DeforestationCheck>
+</DueDiligenceStatement>

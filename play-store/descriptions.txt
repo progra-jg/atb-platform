@@ -1,0 +1,89 @@
+ATB AgriTrace — Place de marché agricole connectée
+
+---
+Short description (FR) — 80 caractères max
+---
+Suivez vos lots, négociez les prix et sécurisez vos paiements en temps réel.
+
+---
+Short description (EN) — 80 caractères max
+---
+Track your crops, negotiate prices, and secure payments in real time.
+
+---
+Full description (FR) — jusqu'à 4000 caractères
+---
+ATB AgriTrace est la première place de marché agricole connectée en Afrique de l'Ouest, conçue pour les producteurs, acheteurs, transporteurs et agents de terrain.
+
+FONCTIONNALITÉS CLÉS
+
+📦 Gestion des lots
+Créez et suivez vos lots de production (cacao, maïs, soja, anacarde, café) avec traçabilité complète du champ à la livraison.
+
+💰 Transactions sécurisées
+Effectuez des paiements via Mobile Money (MTN MoMo, Orange Money, Moov) et gérez vos séquestres avec transparence totale.
+
+📊 Marché en temps réel
+Consultez les prix spot, visualisez les spreads (producteur → marge → acheteur), et accédez aux tendances du marché agricole.
+
+📋 KYC numérique
+Vérification d'identité en ligne pour accéder à des fonctionnalités avancées : financement, groupage, contrats-cadre.
+
+🚚 Logistique intégrée
+Trouvez des transporteurs, gérez les groupages et suivez vos livraisons en temps réel.
+
+📈 Financement et crédit
+Accédez à des offres de financement basées sur votre historique de transactions et votre score de réputation.
+
+🔐 Sécurité et confiance
+Toutes les transactions sont horodatées et tracées. Système de réputation basé sur les transactions réelles entre partenaires.
+
+🌤 Météo et prévisions
+Consultez les prévisions agricoles et les alertes météo pour optimiser vos récoltes.
+
+🎙 Communication vocale (Talkie)
+Messagerie vocale instantanée pour les équipes terrain (hors-ligne compatible).
+
+🏆 Certifications et conformité
+Suivez vos certificats (GlobalGAP, EUDR, Bio) et votre conformité réglementaire.
+
+ATB AgriTrace est disponible en français et en anglais, avec un mode sombre outdoor optimisé pour une utilisation en plein soleil.
+
+---
+Full description (EN) — up to 4000 characters
+---
+ATB AgriTrace is the first connected agricultural marketplace in West Africa, designed for producers, buyers, transporters, and field agents.
+
+KEY FEATURES
+
+📦 Lot Management
+Create and track your production lots (cocoa, maize, soy, cashew, coffee) with full traceability from field to delivery.
+
+💰 Secure Transactions
+Make payments via Mobile Money (MTN MoMo, Orange Money, Moov) and manage escrows with full transparency.
+
+📊 Real-Time Market
+Check spot prices, visualize spreads (producer → margin → buyer), and access agricultural market trends.
+
+📋 Digital KYC
+Online identity verification to access advanced features: financing, groupage, framework contracts.
+
+🚚 Integrated Logistics
+Find transporters, manage groupage, and track your deliveries in real time.
+
+📈 Financing & Credit
+Access financing offers based on your transaction history and reputation score.
+
+🔐 Security & Trust
+All transactions are timestamped and traced. Reputation system based on real transaction history between partners.
+
+🌤 Weather & Forecasts
+Check agricultural forecasts and weather alerts to optimize your harvests.
+
+🎙 Voice Communication (Walkie-Talkie)
+Instant voice messaging for field teams (offline compatible).
+
+🏆 Certifications & Compliance
+Track your certificates (GlobalGAP, EUDR, Organic) and regulatory compliance.
+
+ATB AgriTrace is available in French and English, with an outdoor dark mode optimized for use in direct sunlight.
