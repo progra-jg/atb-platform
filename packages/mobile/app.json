@@ -50,8 +50,7 @@
       "expo-camera",
       "expo-secure-store",
       "expo-sqlite",
-      "expo-notifications",
-      "./plugins/withKotlinFix.js"
+      "expo-notifications"
     ],
     "extra": {
       "apiUrl": "https://api.agritrace.bj/api"
