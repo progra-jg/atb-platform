@@ -5,6 +5,7 @@ on:
     branches: [main, develop]
     paths:
       - "packages/mobile/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
