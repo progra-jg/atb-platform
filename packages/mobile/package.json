@@ -19,6 +19,7 @@
     "axios": "^1.7.0",
     "expo": "~52.0.0",
     "expo-av": "~14.0.0",
+    "expo-build-properties": "^56.0.17",
     "expo-camera": "~16.0.0",
     "expo-constants": "~17.0.0",
     "expo-notifications": "~0.29.0",
