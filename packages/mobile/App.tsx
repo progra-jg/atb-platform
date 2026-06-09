@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
+import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "./src/theme";
@@ -11,7 +12,8 @@ import { useAuthStore } from "./src/store/authStore";
 import { startPeriodicSync, processPendingActions } from "./src/storage/sync";
 import { registerForPushNotifications } from "./src/services/notifications";
 import { useNetworkMonitor, useNetworkStatus } from "./src/utils/network";
-import LoadingSpinner from "./src/components/LoadingSpinner";
+
+SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 2, staleTime: 60000 } },
@@ -39,7 +41,11 @@ export default function App() {
     return stopSync;
   }, []);
 
-  if (isLoading) return <LoadingSpinner />;
+  useEffect(() => {
+    if (!isLoading) SplashScreen.hideAsync();
+  }, [isLoading]);
+
+  if (isLoading) return null;
 
   return (
     <SafeAreaProvider>
