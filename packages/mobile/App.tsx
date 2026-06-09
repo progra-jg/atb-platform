@@ -8,6 +8,7 @@ import { PerformanceProvider } from "./src/contexts/PerformanceContext";
 import { PreRenderProvider } from "./src/contexts/PreRenderContext";
 import "./src/i18n";
 import AppNavigator from "./src/navigation/AppNavigator";
+import AuthNavigator from "./src/navigation/AuthNavigator";
 import { useAuthStore } from "./src/store/authStore";
 import { startPeriodicSync, processPendingActions } from "./src/storage/sync";
 import { registerForPushNotifications } from "./src/services/notifications";
@@ -30,7 +31,7 @@ function SyncOnReconnect() {
 }
 
 export default function App() {
-  const { isLoading, hydrate } = useAuthStore();
+  const { isLoading, user, hydrate } = useAuthStore();
 
   useNetworkMonitor();
 
@@ -47,6 +48,8 @@ export default function App() {
 
   if (isLoading) return null;
 
+  const isAuthenticated = !!user;
+
   return (
     <SafeAreaProvider>
       <ThemeProvider>
@@ -54,8 +57,8 @@ export default function App() {
           <PreRenderProvider>
             <QueryClientProvider client={queryClient}>
               <StatusBar style="auto" />
-              <SyncOnReconnect />
-              <AppNavigator />
+              {isAuthenticated && <SyncOnReconnect />}
+              {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
             </QueryClientProvider>
           </PreRenderProvider>
         </PerformanceProvider>
