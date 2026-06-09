@@ -83,8 +83,8 @@ jobs:
 
       - name: Generate debug keystore & patch signing
         run: |
-          # Generate debug keystore for signing
-          keytool -genkey -v -keystore android/app/debug.keystore -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US" 2>/dev/null
+          # Generate debug keystore for signing (ignore error if already exists)
+          keytool -genkey -v -keystore android/app/debug.keystore -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US" 2>/dev/null || true
           # Make release build type use debug signing (so we get a standalone APK without Metro)
           sed -i 's/minifyEnabled true/minifyEnabled true\n            signingConfig signingConfigs.debug/' android/app/build.gradle
           echo "=== app/build.gradle release block ==="
