@@ -81,12 +81,21 @@ jobs:
             echo "⚠ $TARGET not found, skipping"
           fi
 
-      - name: Build APK debug
-        run: cd android && ./gradlew assembleDebug
+      - name: Generate debug keystore & patch signing
+        run: |
+          # Generate debug keystore for signing
+          keytool -genkey -v -keystore android/app/debug.keystore -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US" 2>/dev/null
+          # Make release build type use debug signing (so we get a standalone APK without Metro)
+          sed -i 's/minifyEnabled true/minifyEnabled true\n            signingConfig signingConfigs.debug/' android/app/build.gradle
+          echo "=== app/build.gradle release block ==="
+          grep -A5 "release {" android/app/build.gradle
+
+      - name: Build APK release (standalone, no Metro needed)
+        run: cd android && ./gradlew assembleRelease -Pdev=false -Pkotlin.incremental=false
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: agritrace-debug
-          path: packages/mobile/android/app/build/outputs/apk/debug/*.apk
+          name: agritrace-release
+          path: packages/mobile/android/app/build/outputs/apk/release/*.apk
           retention-days: 30

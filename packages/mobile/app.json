@@ -67,7 +67,7 @@
       ]
     ],
     "extra": {
-      "apiUrl": "https://api.agritrace.bj/api"
+      "apiUrl": "https://atb-agritrace-api.fly.dev/api"
     }
   }
 }
