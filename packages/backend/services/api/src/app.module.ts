@@ -86,7 +86,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "atb_jwt_secret_dev_2024";
       database: process.env.DB_NAME || "atb_agritrace",
       entities: [__dirname + "/entities/*.entity{.ts,.js}"],
       namingStrategy: new SnakeNamingStrategy(),
-      synchronize: false,
+      synchronize: process.env.DB_SYNCHRONIZE === "true",
       extra: {
         max: 20,
         connectionTimeoutMillis: 5000,
