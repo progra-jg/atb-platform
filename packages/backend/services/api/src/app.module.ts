@@ -38,6 +38,7 @@ import { NewsletterController } from "./controllers/newsletter.controller";
 import { VerificationPoint } from "./entities/verification-point.entity";
 import { FinancingOfferEntity } from "./entities/financing-offer.entity";
 import { FinancingContractEntity } from "./entities/financing-contract.entity";
+import { FinancingRepaymentEntity } from "./entities/financing-repayment.entity";
 import { PaymentModule } from "./payment/payment.module";
 import { PayoutModule } from "./payout/payout.module";
 import { EscrowModule } from "./escrow/escrow.module";
